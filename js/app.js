@@ -48,6 +48,7 @@
    				}else{
    					prevDate = new Date(value.dt_txt).getDate();
    					value.city_name = response.city.name;
+
    					$( "#weatherTemplate" ).tmpl( value ).appendTo( "#forecast-tab" );
    				}
 			});
