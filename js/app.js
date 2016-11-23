@@ -39,19 +39,18 @@
 			console.log("API response");
 		  	console.log(response);
 		  	var prevDate = '';
+		  	var uniqdate = '';
 		  	jQuery.each( response.list, function(index, value) {
 		  		
    				if(new Date(value.dt_txt).getDate() === prevDate){
-   					;
+   					uniqdate = value.dt_txt;
+   					$( "#hourlyTemplate" ).tmpl( value ).appendTo( ".dayforecast" + uniqdate.slice(0, 10) );
    				}else{
    					prevDate = new Date(value.dt_txt).getDate();
    					value.city_name = response.city.name;
    					$( "#weatherTemplate" ).tmpl( value ).appendTo( "#forecast-tab" );
    				}
 			});
-
-		  	
-
 		};
 
 		// Error callback
