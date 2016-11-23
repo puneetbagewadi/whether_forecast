@@ -40,7 +40,7 @@
 		  	console.log(response);
 		  	var prevDate = '';
 		  	var uniqdate = '';
-		  	jQuery.each( response.list, function(index, value) {
+		  	$.each( response.list, function(index, value) {
 		  		
    				if(new Date(value.dt_txt).getDate() === prevDate){
    					uniqdate = value.dt_txt;
@@ -48,7 +48,7 @@
    				}else{
    					prevDate = new Date(value.dt_txt).getDate();
    					value.city_name = response.city.name;
-
+   					value.dt_readable = new Date(value.dt_txt).toString().slice(0, 15);
    					$( "#weatherTemplate" ).tmpl( value ).appendTo( "#forecast-tab" );
    				}
 			});
